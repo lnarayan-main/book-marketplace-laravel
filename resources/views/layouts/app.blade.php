@@ -96,11 +96,32 @@
                         </button>
                         <ul
                             class="absolute right-0 mt-2 w-40 bg-white border shadow-lg py-2 rounded opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                            <li><a href='{{ route('login') }}' class="block px-4 py-2 hover:bg-gray-100 text-sm">Sign In</a></li>
-                            <li><a href='{{  route('register') }}' class="block px-4 py-2 hover:bg-gray-100 text-sm">Sign Up</a></li>
-                            <li><a href='My-Account.php' class="block px-4 py-2 hover:bg-gray-100 text-sm">My
-                                    Account</a></li>
-                            <li><a href="login.php" class="block px-4 py-2 hover:bg-gray-100 text-sm">Sign Out</a></li>
+                            @auth
+                                <li>
+                                    <a href="{{ route('dashboard') }}"
+                                        class="block px-4 py-2 hover:bg-gray-100 text-sm">My Dashboard</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('profile.edit') }}"
+                                        class="block px-4 py-2 hover:bg-gray-100 text-sm">Profile Update</a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();"
+                                        class="block px-4 py-2 hover:bg-gray-100 text-sm text-red-600">
+                                        Sign Out
+                                    </a>
+
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+                                        @csrf
+                                    </form>
+                                </li>
+                            @else
+                                <li><a href="{{ route('login') }}" class="block px-4 py-2 hover:bg-gray-100 text-sm">Sign
+                                        In</a></li>
+                                <li><a href="{{ route('register') }}" class="block px-4 py-2 hover:bg-gray-100 text-sm">Sign
+                                        Up</a></li>
+                            @endauth
                         </ul>
                     </div>
                 </div>
@@ -192,11 +213,12 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div>
-                    <img src="{{  asset('assets/images/logo-w.png') }}" alt="Logo" class="mb-6 max-w-[250px] max-h-[200px] mt-1" />
+                    <img src="{{  asset('assets/images/logo-w.png') }}" alt="Logo"
+                        class="mb-6 max-w-[250px] max-h-[200px] mt-1" />
                     <ul class="space-y-2 text-sm">
                         <li>ABC, Address Here, Country</li>
                         <li>Call Us: <a href="#" class="hover:text-primary transition">+000 000 0000</a></li>
-                        <li>Email: <a href="#" class="hover:text-primary transition">info@surfsidemedia.in</a></li>
+                        <li>Email: <a href="#" class="hover:text-primary transition">info@bookmarket.in</a></li>
                     </ul>
                     <div class="flex space-x-4 mt-6">
                         <a href="#"
@@ -243,7 +265,7 @@
             </div>
 
             <div class="border-t border-gray-400 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-sm">&copy; 2026 Surfside Media All rights reserved.</p>
+                <p class="text-sm">&copy; 2026 Book MarketPlace All rights reserved.</p>
                 <img src="{{  asset('assets/images/payment.png') }}" alt="Payment" class="mt-4 md:mt-0" />
             </div>
         </div>
