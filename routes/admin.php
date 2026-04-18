@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SellerController;
 use App\Http\Controllers\Admin\CustomerController;
@@ -22,3 +23,7 @@ Route::patch('/customers/{user}/toggle-status', [CustomerController::class, 'tog
 // Admin Book Management
 Route::resource('books', AdminBookController::class);
 Route::patch('/books/{book}/toggle-status', [AdminBookController::class, 'toggleStatus'])->name('books.toggle');
+
+// Admin Banner Management
+Route::resource('banners', BannerController::class);
+Route::patch('/banners/{banner}/toggle-status', [BannerController::class, 'toggleStatus'])->name('banners.toggle');

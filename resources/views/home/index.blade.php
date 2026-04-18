@@ -2,36 +2,23 @@
     <section class="relative bg-gray-50 overflow-hidden">
         <div class="swiper-container main-slider h-[500px] lg:h-[600px]">
             <div class="swiper-wrapper">
+                @foreach ($banners as $banner)
                 <div class="swiper-slide flex items-center justify-center">
                     <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-8 items-center h-full">
                         <div class="text-center lg:text-left space-y-4 animate-fadeIn">
-                            <h2 class="text-4xl lg:text-6xl font-bold text-gray-800 leading-tight">New Stylish <br />
-                                Decor Furniture</h2>
-                            <p class="text-lg text-gray-600">Unique Furniture Style Design for Your Family</p>
-                            <a href="shop.php"
-                                class="inline-block bg-primary text-white px-8 py-3 rounded hover:bg-blue-600 transition shadow-lg mt-4">Purchase
-                                Now</a>
+                            <h2 class="text-4xl lg:text-6xl font-bold text-gray-800 leading-tight">{{ Str::words($banner->title, 3, '') }} <br />
+                                {{ Str::after($banner->title, Str::words($banner->title, 3, '')) }}</h2>
+                            <p class="text-lg text-gray-600">{{ $banner->description }}</p>
+                            <a href="{{ $banner->link }}"
+                                class="inline-block bg-primary text-white px-8 py-3 rounded hover:bg-blue-600 transition shadow-lg mt-4">Click
+                                here</a>
                         </div>
                         <div class="hidden lg:block">
-                            <img src="assets/images/slider/slider-item-1.png" alt="Furniture" class="mx-auto" />
+                            <img src="{{ asset('storage/'.$banner->image) }}" alt="Furniture" class="mx-auto" />
                         </div>
                     </div>
                 </div>
-                <div class="swiper-slide flex items-center justify-center">
-                    <div class="container mx-auto px-4 grid lg:grid-cols-2 gap-8 items-center h-full">
-                        <div class="text-center lg:text-left space-y-4">
-                            <h2 class="text-4xl lg:text-6xl font-bold text-gray-800 leading-tight">Modern Living <br />
-                                Room Sets</h2>
-                            <p class="text-lg text-gray-600">Comfort and Style combined.</p>
-                            <a href="shop.php"
-                                class="inline-block bg-primary text-white px-8 py-3 rounded hover:bg-blue-600 transition shadow-lg mt-4">Shop
-                                Now</a>
-                        </div>
-                        <div class="hidden lg:block">
-                            <img src="assets/images/slider/slider-item-2.png" alt="Furniture" class="mx-auto" />
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="swiper-pagination"></div>
         </div>
@@ -98,7 +85,7 @@
 
             <div class="grid grid-cols-2 md:grid-cols-5 gap-8 items-center">
 
-                <a href="/brands/the-oak-studio" class="flex flex-col items-center group">
+                <a href="#" class="flex flex-col items-center group">
                     <div
                         class="w-32 h-32 flex items-center justify-center p-4 rounded-xl grayscale group-hover:grayscale-0 group-hover:shadow-xl group-hover:bg-white transition-all duration-300 border border-transparent group-hover:border-gray-100">
                         <img src="uploads/brands/1.jpg" alt="The Oak Studio"
@@ -110,7 +97,7 @@
                     </p>
                 </a>
 
-                <a href="/brands/luxe-edge" class="flex flex-col items-center group">
+                <a href="#" class="flex flex-col items-center group">
                     <div
                         class="w-32 h-32 flex items-center justify-center p-4 rounded-xl grayscale group-hover:grayscale-0 group-hover:shadow-xl group-hover:bg-white transition-all duration-300 border border-transparent group-hover:border-gray-100">
                         <img src="uploads/brands/2.jpg" alt="Luxe Edge" class="max-h-full max-w-full object-contain">
@@ -121,7 +108,7 @@
                     </p>
                 </a>
 
-                <a href="/brands/urban-nest" class="flex flex-col items-center group">
+                <a href="#" class="flex flex-col items-center group">
                     <div
                         class="w-32 h-32 flex items-center justify-center p-4 rounded-xl grayscale group-hover:grayscale-0 group-hover:shadow-xl group-hover:bg-white transition-all duration-300 border border-transparent group-hover:border-gray-100">
                         <img src="uploads/brands/3.jpg" alt="Urban Nest" class="max-h-full max-w-full object-contain">
@@ -132,7 +119,7 @@
                     </p>
                 </a>
 
-                <a href="/brands/heritage-wood" class="flex flex-col items-center group">
+                <a href="#" class="flex flex-col items-center group">
                     <div
                         class="w-32 h-32 flex items-center justify-center p-4 rounded-xl grayscale group-hover:grayscale-0 group-hover:shadow-xl group-hover:bg-white transition-all duration-300 border border-transparent group-hover:border-gray-100">
                         <img src="uploads/brands/4.jpg" alt="Heritage Wood"
@@ -144,7 +131,7 @@
                     </p>
                 </a>
 
-                <a href="/brands/pure-pine" class="flex flex-col items-center group">
+                <a href="#" class="flex flex-col items-center group">
                     <div
                         class="w-32 h-32 flex items-center justify-center p-4 rounded-xl grayscale group-hover:grayscale-0 group-hover:shadow-xl group-hover:bg-white transition-all duration-300 border border-transparent group-hover:border-gray-100">
                         <img src="uploads/brands/5.jpg" alt="Pure Pine" class="max-h-full max-w-full object-contain">
@@ -167,7 +154,7 @@
                 @foreach ($newBooks as $newBook)
                 <div class="group relative">
                     <div class="relative overflow-hidden bg-gray-100 rounded-lg">
-                        <a href="details.php">
+                        <a href="{{  route('home.book-detail', $newBook) }}">
                             <img src="{{ $newBook->cover_image ? asset('storage/'.$newBook->cover_image) : 'https://via.placeholder.com/40x60' }}" alt="Product"
                                 class="w-full h-[300px] object-cover transition duration-500 group-hover:scale-105" />
                         </a>
@@ -185,7 +172,7 @@
                         </div>
                     </div>
                     <div class="mt-4 text-center">
-                        <h4 class="text-lg font-medium hover:text-primary transition"><a href="details.php">{{ $newBook->title }}</a></h4>
+                        <h4 class="text-lg font-medium hover:text-primary transition"><a href="{{  route('home.book-detail', $newBook) }}">{{ $newBook->title }}</a></h4>
                         <p class="text-primary font-bold mt-1">${{ $newBook->price }}</p>
                     </div>
                 </div>
@@ -281,11 +268,11 @@
                     <div class="swiper-slide">
                         <div class="group text-center">
                             <div class="overflow-hidden rounded bg-gray-100 mb-4 relative">
-                                <a href="details.php"><img src="{{ $book->cover_image ? asset('storage/'.$book->cover_image) : 'https://via.placeholder.com/40x60' }}"
+                                <a href="{{ route('home.book-detail', $book) }}"><img src="{{ $book->cover_image ? asset('storage/'.$book->cover_image) : 'https://via.placeholder.com/40x60' }}"
                                         class="w-full object-cover group-hover:scale-105 transition duration-500"
                                         alt="Prod"></a>
                             </div>
-                            <h4 class="font-medium"><a href="details.php">{{ $book->title }}</a></h4>
+                            <h4 class="font-medium"><a href="{{  route('home.book-detail', $book) }}">{{ $book->title }}</a></h4>
                             <p class="text-primary font-bold">${{ $book->price }}</p>
                         </div>
                     </div>

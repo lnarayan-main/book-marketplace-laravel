@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get("/", [HomeController::class, "index"])->name("home.index");
+Route::get("/book-detail/{book}", [HomeController::class, "bookDetail"])->name("home.book-detail");
 
 Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])

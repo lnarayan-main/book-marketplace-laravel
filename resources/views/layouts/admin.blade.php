@@ -35,6 +35,9 @@
                 <a href="{{ route('admin.books.index') }}" class="group flex items-center px-4 py-3 text-sm font-medium rounded-md hover:bg-slate-800 hover:text-white transition">
                     <i class="fa fa-shopping-bag mr-3 w-5 text-center"></i> All Books
                 </a>
+                <a href="{{ route('admin.banners.index') }}" class="group flex items-center px-4 py-3 text-sm font-medium rounded-md hover:bg-slate-800 hover:text-white transition">
+                    <i class="fa fa-shopping-bag mr-3 w-5 text-center"></i> Banners
+                </a>
             </nav>
 
             <div class="p-4 border-t border-slate-800">
