@@ -9,13 +9,20 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $user = Auth::user();
+        $user = auth()->user();
 
-        return match ($user->role) {
-            2 => redirect()->route('admin.dashboard'),
-            1 => redirect()->route('seller.dashboard'),
-            0 => redirect()->route('customer.dashboard'),
-            default => redirect()->route('login'),
-        };
+        if ($user->role == 2)
+            return redirect()->route('admin.dashboard');
+
+        if ($user->role == 1) {
+            $books = $user->books()->latest()->get();
+            $categories = \App\Models\Category::all();
+            // $orders = $user->sales();
+
+            return view('seller.dashboard', compact('books', 'categories'));
+        }
+
+        // Default Customer Dashboard
+        return view('dashboard');
     }
 }
