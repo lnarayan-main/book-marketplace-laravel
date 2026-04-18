@@ -11,7 +11,19 @@
             </div>
             <div>
                 <p class="text-sm text-gray-500 font-medium uppercase">Total Sellers</p>
-                <h3 class="text-2xl font-bold">42</h3>
+                <h3 class="text-2xl font-bold">{{ $sellerCount }}</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-6 border-b-4 border-indigo-500">
+        <div class="flex items-center">
+            <div class="p-3 bg-indigo-100 rounded-full text-indigo-600 mr-4">
+                <i class="fa fa-users text-xl"></i>
+            </div>
+            <div>
+                <p class="text-sm text-gray-500 font-medium uppercase">Total Customers</p>
+                <h3 class="text-2xl font-bold">{{ $customerCount }}</h3>
             </div>
         </div>
     </div>
@@ -23,7 +35,7 @@
             </div>
             <div>
                 <p class="text-sm text-gray-500 font-medium uppercase">Total Books</p>
-                <h3 class="text-2xl font-bold">1,204</h3>
+                <h3 class="text-2xl font-bold">{{  $bookCount }}</h3>
             </div>
         </div>
     </div>

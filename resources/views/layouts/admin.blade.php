@@ -11,9 +11,9 @@
     <div class="flex h-screen overflow-hidden">
         
         <aside class="w-64 bg-slate-900 text-slate-300 flex-shrink-0 hidden md:flex flex-col">
-            <div class="p-6 text-white text-2xl font-bold border-b border-slate-800">
+            <a href="{{ route('admin.dashboard') }}" class="p-6 text-white text-2xl font-bold border-b border-slate-800">
                 Book <span class="text-indigo-400">Admin</span>
-            </div>
+            </a>
             
             <nav class="flex-1 mt-4 space-y-1 px-2">
                 <a href="{{ route('admin.dashboard') }}" class="group flex items-center px-4 py-3 text-sm font-medium rounded-md hover:bg-slate-800 hover:text-white transition {{ request()->routeIs('admin.dashboard') ? 'bg-slate-800 text-white' : '' }}">
@@ -24,11 +24,15 @@
                     <i class="fa fa-list mr-3 w-5 text-center"></i> Categories
                 </a>
 
-                <a href="#" class="group flex items-center px-4 py-3 text-sm font-medium rounded-md hover:bg-slate-800 hover:text-white transition">
+                <a href="{{ route('admin.sellers.index') }}" class="group flex items-center px-4 py-3 text-sm font-medium rounded-md hover:bg-slate-800 hover:text-white transition">
                     <i class="fa fa-users mr-3 w-5 text-center"></i> Sellers
                 </a>
 
-                <a href="#" class="group flex items-center px-4 py-3 text-sm font-medium rounded-md hover:bg-slate-800 hover:text-white transition">
+                <a href="{{ route('admin.customers.index') }}" class="group flex items-center px-4 py-3 text-sm font-medium rounded-md hover:bg-slate-800 hover:text-white transition">
+                    <i class="fa fa-users mr-3 w-5 text-center"></i> Customers
+                </a>
+
+                <a href="{{ route('admin.books.index') }}" class="group flex items-center px-4 py-3 text-sm font-medium rounded-md hover:bg-slate-800 hover:text-white transition">
                     <i class="fa fa-shopping-bag mr-3 w-5 text-center"></i> All Books
                 </a>
             </nav>
